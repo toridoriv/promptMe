@@ -18,3 +18,13 @@ const getPromptGenre = str => {
 const randomNumber = () => {
   return Math.floor((Math.random() * 20));
 };
+
+const getRandomPrompt = arr => {
+
+  /**
+  * array[randomNumber]
+  * si el array[pos] es de type text o chat, return array[pos].body
+  * si el array[pos] es de type link, ignora3
+  */
+
+};
