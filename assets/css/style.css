@@ -4,6 +4,12 @@ body, html {
   top: 0;
 }
 
+#main-container {
+  margin: 0;
+  width: 100%;
+  padding: 80px 0;
+}
+
 .row {
   margin: 0;
 }
@@ -39,10 +45,6 @@ nav ul li {
   float: left;
 }
 
-.container {
-  padding: 80px 0;
-}
-
 .section {
   width: 100%;
   padding: 20px 0;
@@ -60,4 +62,83 @@ nav ul li {
 .login-form .submit-button {
   width: 100%;
   padding: 20px 0;
+}
+
+
+.dash-s {
+  background-image: url(../img/notebook_write_watch_pen_67636_1920x1080.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: auto;
+  background-position: center;
+}
+
+
+
+/* flecha animada */
+
+
+
+.arrow-container {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ height: 100px;
+}
+
+.chevron {
+  position: absolute;
+  width: 2.1em;
+  height: 0.48em;
+  opacity: 0;
+  transform: scale(0.3);
+  animation: move-chevron 3s ease-out infinite;
+}
+
+.chevron:first-child {
+  animation: move-chevron 3s ease-out 1s infinite;
+}
+
+.chevron:nth-child(2) {
+  animation: move-chevron 3s ease-out 2s infinite;
+}
+
+.chevron:before,
+.chevron:after {
+ content: '';
+ position: absolute;
+ top: 0;
+ height: 100%;
+ width: 50%;
+ background: #2c3e50;
+}
+
+.chevron:before {
+ left: 0;
+ transform: skewY(30deg);
+}
+
+.chevron:after {
+ right: 0;
+ width: 50%;
+ transform: skewY(-30deg);
+}
+
+@keyframes move-chevron {
+ 25% {
+  opacity: 1;
+  }
+ 33.3% {
+  opacity: 1;
+  transform: translateY(2.28em);
+ }
+ 66.6% {
+  opacity: 1;
+  transform: translateY(3.12em);
+ }
+ 100% {
+  opacity: 0;
+  transform: translateY(4.8em) scale(0.5);
+ }
 }
