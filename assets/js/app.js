@@ -1,14 +1,16 @@
-$('.prompt').on('click', '.save', function (){
+$('.prompt').on('click', '.save', function () {
   console.log('hola')
-  if($(this).hasClass('not-active')){
-    //$(this).removeClass('not-active');
-    $(this).html('<i class="fas fa-bookmark fa-2x not-active marker"></i>');
+  if ($(this).hasClass('not-active')) {
+    $(this).removeClass('not-active');
+    $(this).html('<i class="fas fa-bookmark fa-2x marker"></i>');
     var div = $(this).parent();
     //guardar html prompt entero
     div = $(div).html()
     console.log(div);
     // guardar dato del prompt
-  }else{
+  }
+  else {
+    $(this).addClass('not-active');
     $(this).html('<i class="far fa-bookmark fa-2x marker"></i>');
     var div = $(this).parent();
     div = $(div).html()
