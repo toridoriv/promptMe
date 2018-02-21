@@ -13,6 +13,12 @@ body, html {
   margin: 0;
 }
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .full-container {
   width: 100%;
   min-height: 100vh;
@@ -54,9 +60,9 @@ nav ul li {
   padding: 0;
 }
 
-.login-s, .register-s, .inicio-no-s {
+/* .login-s, .register-s {
   display: none;
-}
+} */
 
 .login-form {
   border: 1px solid black;
@@ -80,7 +86,11 @@ nav ul li {
   background-position: center;
   height: 100vh;
   padding: 60px 10px;
-  color:  #252422;
+  color: #252422;
+}
+
+.dash-s .prompt-container {
+  margin-top: 30px;
 }
 
 .footer {
@@ -113,6 +123,9 @@ nav ul li {
     height: 25px;
 }
 
+.prompt-container {
+  position: relative;
+}
 
 .prompt {
   padding: 20px 0;
@@ -123,7 +136,22 @@ nav ul li {
   display: inline-block;
 }
 
+.prompt-list li {
+  margin-bottom: 25px;
+}
 
+
+.save {
+  position: absolute;
+  top: 15px;
+  right: 17px;
+}
+
+.url {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
 
 /* flecha animada */
 
