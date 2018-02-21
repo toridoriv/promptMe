@@ -141,6 +141,7 @@ const saveFavs = (firebaseUser, pos) => {
 const showFavs = (firebaseUser) => {
   const ref = firebase.database().ref(`users/${firebaseUser.uid}/saved`);
   ref.on('value', function(snapshot) {
+    $('#results').empty();
     for (let i = 0; i < snapshot.val().length; i++) {
       $('#results').append(`<p>${snapshot.val()[i]}</p>`);
     }
