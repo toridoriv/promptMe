@@ -31,8 +31,10 @@ const getRandomPrompt = () => {
       array = array[num];
       console.log(array);
       let content = array.body;
+      let url = array.post_url;
       console.log(content);
       $('.dash-s .prompt-container p').html(content);
+      $('.dash-s .prompt-container .url a').attr('href', url);
     })
     .catch(error => alert(`I'm sorry, it seems there isn't any prompt with that keyword :(`));
 };
