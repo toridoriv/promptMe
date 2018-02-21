@@ -17,13 +17,13 @@
     <nav>
       <div class="logo">
         <!-- logo here -->
-        <img src="assets/img/mini-logo.png" alt="Prompt Me">
+        <img src="assets/img/mini-logo.png" alt="Prompt Me" id="logo">
       </div>
 
 
       <ul class="reg-log">
-        <li id="btn-register">Register</li>
-        <li id="btn-login">Log In</li>
+        <li id="enter-register">Register</li>
+        <li id="enter-login">Log In</li>
       </ul>
       <!-- lista que aparece al iniciar sesión -->
       <ul class="d-none" id="login-menu">
@@ -36,64 +36,6 @@
     
     <!-- container de la página que estará constantemente cambiando -->
     <div id="main-container">
-      <!-- sección login -->
-      <div class="login-s section">
-        <div class="row">
-          <div class="col-12 col-lg-8 offset-lg-2">
-            <form action="" class="col-12 col-md-8 offset-md-2 login-form">
-              <div class="text-center">
-                <h4>Login</h4>
-                <hr>
-              </div>
-              <div class="mail col-12 col-md-8 offset-md-2">
-                <label for="input-mail">E-mail</label>
-                <input type="email" id="input-mail" placeholder="email" class="form-control">
-              </div>
-              <div class="password col-12 col-md-8 offset-md-2">
-                <label for="input-pass">Password</label>
-                <input type="password" id="input-pass" placeholder="password" class="form-control">
-              </div>
-              <div class="submit-button text-center col-12 col-md-8 offset-md-2">
-                <button type="submit" class="btn" id="btn-login">Log In</button>
-              </div>
-              <div class="text-center">
-                <span>New Around Here? <a href="#">Register Now!</a></span>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <!-- fin sección login -->
-      <!-- sección register -->
-      <div class="register-s section">
-        <div class="row">
-          <div class="col-12 col-lg-8 offset-lg-2">
-            <form action="" class="col-12 col-md-8 offset-md-2 login-form">
-              <div class="text-center">
-                <h4>Start Using Prompt Me!</h4>
-                <p>Descripción breve de para qué sirve la página y para qué sirve registrarse en ella aquí.</p>
-                <hr>
-              </div>
-              <div class="mail col-12 col-md-8 offset-md-2">
-                <label for="input-mail">E-mail</label>
-                <input type="email" id="input-mail-register" placeholder="email" class="form-control">
-              </div>
-              <div class="password col-12 col-md-8 offset-md-2">
-                <label for="input-pass">Password</label>
-                <input type="password" id="input-pass-register" placeholder="password" class="form-control">
-              </div>
-              <div class="submit-button text-center col-12 col-md-8 offset-md-2">
-                <button type="submit" class="btn" id="btn-register">Register</button>
-              </div>
-              <div class="text-center">
-                <span>Already Have an Account? <a href="#">Login!</a></span>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <!-- fin sección register -->
-
       <!-- sección inicio -->
       <div class="dash-s section">
         <div class="row">
@@ -117,15 +59,17 @@
                   </div>
                   <span class="url"><a href=""><i class="fas fa-external-link-square-alt fa-2x"></i></a></span>
                 </div>
-
               </div>
             </div>
           </div>
         </div>
-      </div> <!-- fin sección inicio, reusable para búsqueda -->
+      </div>
+      <!-- sección de búsqueda, de random prompts y de favoritos -reusable- -->
       <div class="listing-prompt section">
-        <h3 class="text-center" id="title-for-prompts">Random prompts for you (?</h3>
-        <hr>
+        <div class="title">
+          <h3 class="text-center" id="title-for-prompts">Random prompts for you (?</h3>
+          <hr>
+        </div>
         <!-- Lista de prompts-->
         <ul class="prompt-list">
           <li>
@@ -164,8 +108,6 @@
           </li>
         </ul>
       </div>
-      <!-- sección búsqueda -->
-
     </div> <!-- fin container cambiante -->
     <footer class="footer">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>

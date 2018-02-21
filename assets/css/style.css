@@ -14,7 +14,6 @@ h1, h2, h3, h4, h5 {
   width: 100%;
 }
 
-
 .row {
   margin: 0;
 }
@@ -96,7 +95,7 @@ nav ul li {
   padding: 100px 0;
 }
 
- .login-s, .register-s, .listing-prompt {
+.listing-prompt {
   display: none;
 } 
 
@@ -216,7 +215,25 @@ nav ul li {
 }
 
 .prompt-list li {
-  margin-bottom: 25px;
+  margin-bottom: 35px;
+}
+
+.prompt p {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.listing-prompt {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.listing-prompt hr {
+  max-width: 900px;
+}
+.listing-prompt .title {
+  padding-bottom: 50px;
+
 }
 
 
@@ -250,6 +267,7 @@ nav ul li {
 #title-for-prompts {
   color: #F2E8DE;
 }
+
 
 /* flecha animada */
 
@@ -321,7 +339,7 @@ nav ul li {
 }
 
 
-@media (min-width: 721px) {
+@media (min-width: 770px) {
   .vertical-align {
       display: flex;
       align-items: center;
