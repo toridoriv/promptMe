@@ -87,6 +87,11 @@ nav ul li {
 
 .logo img {
   height: 60px;
+  cursor: pointer;
+}
+
+.logo img:hover {
+  opacity: .8;
 }
 
 .section {
