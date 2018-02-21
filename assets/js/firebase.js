@@ -1,3 +1,13 @@
+const config = {
+  apiKey: "AIzaSyDZQIDw1GLHfGjQeQL6sMhtVV9744igLt8",
+  authDomain: "promptme-app.firebaseapp.com",
+  databaseURL: "https://promptme-app.firebaseio.com",
+  projectId: "promptme-app",
+  storageBucket: "promptme-app.appspot.com",
+  messagingSenderId: "107220044807"
+};
+
+
 const btnReg = $('#btn-register');
 const btnLog = $('#btn-login');
 const inputPass = $('#input-pass');
