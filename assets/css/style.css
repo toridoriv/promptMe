@@ -14,6 +14,7 @@ h1, h2, h3, h4, h5 {
   width: 100%;
 }
 
+
 .row {
   margin: 0;
 }
@@ -72,6 +73,7 @@ nav ul li {
   cursor: pointer;
   font-size: 13.5px;
   text-transform: uppercase;
+  transition: ease-in-out .3s;
 }
 
 .reg-log li:hover {
@@ -94,9 +96,9 @@ nav ul li {
   padding: 100px 0;
 }
 
-/* .login-s, .register-s {
+ .login-s, .register-s, .listing-prompt {
   display: none;
-} */
+} 
 
 .login-form {
   padding: 40px 10px;
@@ -142,13 +144,26 @@ nav ul li {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
-  padding: 60px 10px;
   color: #252422;
+}
+
+.welcome h1, .welcome p:not(.prompt-text) {
+  color: #252422;
+  font-weight: 700;
+  text-shadow: -1px 0 #F2E8DE, 0 1px #F2E8DE, 1px 0 #F2E8DE, 0 -1px #F2E8DE;
+}
+
+
+.welcome p {
+  font-size: 18px;
 }
 
 .dash-s .prompt-container {
   margin-top: 30px;
+}
+
+.dash-s .prompt:hover {
+  box-shadow: 0px 1px 9px 2px #252422;
 }
 
 .footer {
@@ -186,8 +201,14 @@ nav ul li {
 }
 
 .prompt {
-  padding: 20px 0;
   background-color: #F2E8DE;
+  padding: 15px;
+}
+
+.prompt-container .for-border {
+  padding: 20px;
+  position: relative;
+  border: 1px dashed #252422;
 }
 
 .prompt * {
@@ -203,12 +224,14 @@ nav ul li {
   position: absolute;
   top: 15px;
   right: 17px;
+  cursor: pointer;
 }
 
 .url {
   position: absolute;
   bottom: 15px;
   right: 15px;
+  cursor: pointer;
 }
 
 .marker {
@@ -295,4 +318,12 @@ nav ul li {
   opacity: 0;
   transform: translateY(4.8em) scale(0.5);
  }
+}
+
+
+@media (min-width: 721px) {
+  .vertical-align {
+      display: flex;
+      align-items: center;
+  }
 }
