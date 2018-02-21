@@ -47,6 +47,24 @@ const getRandomPrompt = () => {
     .catch(error => alert(`I'm sorry, it seems there isn't any prompt with that keyword :(`));
 };
 
+// Obteniendo varios prompt random para el inicio con login
+const getRandomPrompts = () => {
+  const promise = fetch(`https://api.tumblr.com/v2/tagged?tag=prompt&api_key=${tumblrAPI}&filter=text`);
+  promise
+    .then(data => data.json())
+    .then(data => {
+      //console.log(filterTypeText(data.response));
+      let array = filterTypeText(data.response);
+      array.forEach(function(element) {
+      let content = element.body;
+      let url = element.post_url;
+      $('ul.prompt-list').append(`<li><div class="prompt-container row"><div class="prompt col-12 col-md-8 offset-md-2 vertical-align"><div class="for-border vertical-align"><figure class="col-12 col-md-3 text-center"><img src="assets/img/bookie.png" alt="book"></figure><div class="contentp col-12 col-md-8"><p class="prompt-text">${content}</p></div><span class="save not-active"><i class="far fa-bookmark fa-2x marker"></i></span><span class="url"><a href="${url}" target="_blank"><i class="fas fa-external-link-square-alt fa-2x"></i></a></span></div></div></div></li>`);
+      })
+
+    })
+    .catch(error => alert(`I'm sorry, it seems there isn't any prompt with that keyword :(`));
+};
+
 // Genera un número random de 0 a 20
 const randomNumber = (array) => {
   return Math.floor((Math.random() * array.length));

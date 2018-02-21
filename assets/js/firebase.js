@@ -7,13 +7,8 @@ const config = {
   messagingSenderId: "107220044807"
 };
 
-
 const btnReg = $('#btn-register');
 const btnLog = $('#btn-login');
-const inputPass = $('#input-pass');
-const inputMail = $('#input-mail');
-const inputPassReg = $('#input-pass-register');
-const inputMailReg = $('#input-mail-register');
 const btnLogOut = $('#btn-logout');
 const inputNick = $('#input-nick');
 // PENDIENTE: Modificar el elemento padre
@@ -23,15 +18,26 @@ const parentElement = $('#main-container');
 
 // Función para logearse a Firebase
 const login = (event) => {
-  $('#main-container #btn-login').on('click', function(event) { //function(error, event)
+  $('#main-container').on('click', '#btn-login', function(event) { //function(error, event)
     event.preventDefault();
+    console.log('hola')
+    const inputPass = $('#input-pass');
+    const inputMail = $('#input-mail');
     const email = inputMail.val();
     const pass = inputPass.val();
     const auth = firebase.auth();
-
     //Limpiando los inputs
     inputMail.val('');
     inputPass.val('');
+    // pasando a inicio con login :D
+    $('nav').empty();
+    $('nav').append(loginNav);
+    $('#main-container').empty();
+    $('#main-container').append(searchContainerHTML);
+    getRandomPrompts();
+    $(window).scrollTop(0);
+    signout();
+    // terminando de pasar a inicio con login
     const promise = auth.signInWithEmailAndPassword(email, pass);
     promise.catch(error => console.log(error.message));
   });
@@ -39,16 +45,21 @@ const login = (event) => {
 
 // Función para registrarse en Firebase
 const signUp = (event) => {
-  $('#main-container #btn-register').on('click', function(event) {
+  $('#main-container').on('click', ' #btn-register', function(event) {
     event.preventDefault();
+    const inputPassReg = $('#input-pass-register');
+    const inputMailReg = $('#input-mail-register');
     // POR HACER: Revisar que este input sea un email y no cualquier string
     const email = inputMailReg.val();
     const pass = inputPassReg.val();
     const auth = firebase.auth();
-
     //Limpiando los inputs
     inputMailReg.val('');
     inputPassReg.val('');
+    // mostrando mensaje de éxito
+    $('form').empty();
+    $('form').append('<p class="text-center">Registro Completo, ya puedes iniciar sesión.</p>');
+    $(window).scrollTop(0);
     const promise = auth.createUserWithEmailAndPassword(email, pass);
     promise.catch(error => console.log(error.message));
   });
@@ -66,7 +77,6 @@ const realTimeListener = () => {
       // Al conectarse el usuario, inmediatamente se obtiene el número de marcadores
       getChildNumber(firebaseUser);
       // Remplazar main-container con el elemento padre
-      $('#login-menu').removeClass('d-none');
       signout();
       console.log(firebaseUser.displayName);
     } else {
@@ -79,10 +89,17 @@ const realTimeListener = () => {
 
 const signout = () => {
   // Remplazar main-container con el elemento padre
-  $('#login-menu #btn-logout').on('click', function(event) {
+  $('#login-menu').on('click', '#btn-logout', function(event) {
     event.preventDefault();
     firebase.auth().signOut();
-    $('#login-menu').addClass('d-none');
+    // pasando a inicio sin login :(
+    $('nav').empty();
+    $('nav').append(noLoginNav);
+    $('#main-container').empty();
+    $('#main-container').append(dashSectionHTML);
+    getRandomPrompt();
+    $(window).scrollTop(0);
+    // terminando de pasar a inicio sin login
   });
 };
 

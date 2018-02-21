@@ -16,32 +16,13 @@
     <!-- nav -->
     <nav>
       <div class="logo col-5 col-md-2">
-        <!-- logo here -->
         <img src="assets/img/mini-logo.png" alt="Prompt Me" id="logo">
       </div>
-
-
-      <ul class="reg-log d-none">
-        <li id="enter-register">Register</li>
-        <li id="enter-login">Log In</li>
+      <ul class="reg-log">
+        <li class="enter-register">Register</li>
+        <li class="enter-login">Log In</li>
       </ul>
-      <!-- lista que aparece al iniciar sesión -->
-      <div class="search-container d-none d-lg-inline-block col-lg-5">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Busca cositas aquí" aria-label="Busca cositas aquí" aria-describedby="basic-addon2" id="search">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="search-btn"><i class="fas fa-search"></i></button>
-          </div>
-        </div>
-      </div>
-      <ul class="col-7 col-lg-5 text-right" id="login-menu">
-        <li class="d-lg-none"><i class="fas fa-search"></i></li>
-        <li><i class="fas fa-heart"></i> <span class="d-none d-lg-inline-block">Favorites</span></li>
-        <li><i class="fas fa-cogs"></i> <span class="d-none d-lg-inline-block">Settings</span></li>
-        <li id="btn-logout"><i class="fas fa-sign-out-alt"></i> <span class="d-none d-lg-inline-block">Log Out</span></li>
-      </ul> <!-- fin lista que aparece al iniciar sesión -->
     </nav>
-    
     <!-- container de la página que estará constantemente cambiando -->
     <div id="main-container">
       <!-- sección inicio -->
@@ -55,7 +36,7 @@
               <div class="chevron"></div>
               <div class="chevron"></div>
             </div>
-            <!-- PROMPT DISEÑO ESTO SE QUITA LUEGO*** -->
+            <!-- PROMPT RANDOM -->
             <div class="prompt-container row">
               <div class="prompt col-12 col-md-8 offset-md-2 vertical-align">
                 <div class="for-border vertical-align">
@@ -72,16 +53,11 @@
           </div>
         </div>
       </div>
-      <!-- sección de búsqueda, de random prompts y de favoritos -reusable- -->
-
     </div> <!-- fin container cambiante -->
     <footer class="footer">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
     </footer>
   </div> <!-- fin full-container -->
-
-
-
 
   <!-- jquery -->
   <script src="assets/js/jquery-3.3.1.js"></script>

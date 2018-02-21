@@ -1,3 +1,4 @@
+/* elementos y clases varias */
 body, html {
   padding: 0;
   margin: 0;
@@ -37,6 +38,13 @@ hr {
   position: relative;
 }
 
+.section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 0;
+}
+
+/* nav */
 nav {
   position: fixed;
   width: 100%;
@@ -79,7 +87,6 @@ nav ul li {
   background-color: #F2E8DE;
   color: #252422;
 }
-
 
 #login-menu {
   height: 70px;
@@ -148,12 +155,7 @@ nav ul li {
   opacity: .8;
 }
 
-.section {
-  width: 100%;
-  min-height: 100vh;
-  padding: 100px 0;
-}
-
+/* sección login y registro */
 .login-form {
   padding: 40px 10px;
   background-color: #F2E8DE;
@@ -192,7 +194,7 @@ nav ul li {
   font-weight: 600;
 }
 
-
+/* inicio sin login */
 .dash-s {
   background-image: url(../img/notebook_write_watch_pen_67636_1920x1080.jpg);
   background-repeat: no-repeat;
@@ -220,6 +222,81 @@ nav ul li {
   box-shadow: 0px 1px 9px 2px #252422;
 }
 
+/* contenedor de prompt */
+.prompt-container {
+  position: relative;
+}
+
+.prompt {
+  background-color: #F2E8DE;
+  padding: 15px;
+}
+
+.prompt-container .for-border {
+  width: 100%;
+  padding: 20px;
+  position: relative;
+  border: 1px dashed #252422;
+}
+
+.prompt * {
+  display: inline-block;
+}
+
+/* prompt en lista */
+.prompt-list li {
+  margin-bottom: 35px;
+}
+
+.prompt p {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.listing-prompt {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.listing-prompt hr {
+  max-width: 900px;
+}
+
+.listing-prompt .title {
+  padding-bottom: 50px;
+}
+
+.save {
+  position: absolute;
+  top: 15px;
+  right: 17px;
+  cursor: pointer;
+}
+
+.url {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.marker {
+  color: #410B13;
+}
+
+.prompt .url a {
+  color: #410B13;
+}
+
+.prompt .url a:hover {
+  color: #1B3022;
+}
+
+#title-for-prompts {
+  color: #F2E8DE;
+}
+
+/* footer */
 .footer {
   position: absolute;
   right: 0;
@@ -250,85 +327,9 @@ nav ul li {
     height: 25px;
 }
 
-.prompt-container {
-  position: relative;
-}
-
-.prompt {
-  background-color: #F2E8DE;
-  padding: 15px;
-}
-
-.prompt-container .for-border {
-  width: 100%;
-  padding: 20px;
-  position: relative;
-  border: 1px dashed #252422;
-}
-
-.prompt * {
-  display: inline-block;
-}
-
-.prompt-list li {
-  margin-bottom: 35px;
-}
-
-.prompt p {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.listing-prompt {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.listing-prompt hr {
-  max-width: 900px;
-}
-.listing-prompt .title {
-  padding-bottom: 50px;
-
-}
-
-
-.save {
-  position: absolute;
-  top: 15px;
-  right: 17px;
-  cursor: pointer;
-}
-
-.url {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  cursor: pointer;
-}
-
-.marker {
-  color: #410B13;
-}
-
-.prompt .url a {
-  color: #410B13;
-}
-
-.prompt .url a:hover {
-  color: #1B3022;
-}
-
-
-#title-for-prompts {
-  color: #F2E8DE;
-}
 
 
 /* flecha animada */
-
-
-
 .arrow-container {
  display: flex;
  justify-content: center;
@@ -394,7 +395,7 @@ nav ul li {
  }
 }
 
-
+/* un par de medias */
 @media (min-width: 770px) {
   .vertical-align {
       display: flex;
