@@ -75,7 +75,7 @@ nav ul li {
   transition: ease-in-out .3s;
 }
 
-.reg-log li:hover, #login-menu li:hover {
+.reg-log li:hover, #login-menu li:hover, .input-group-append button:hover {
   background-color: #F2E8DE;
   color: #252422;
 }
@@ -108,6 +108,30 @@ nav ul li {
 .search-container input, .input-group-append {
   margin: 0;
   height: 45px;
+}
+
+.search-container input {
+  background-color: #F2E8DE;
+  border: 1px solid #252422;
+  border-right: none;
+}
+
+.search-container input::placeholder {
+  color: #252422;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.search-container input:focus {
+  background-color: #F2E8DE;
+  border-color: #410B13;
+  box-shadow: 0 0 0 0.2rem rgba(65,11,19,.25);
+}
+
+.input-group-append button {
+  background-color: #252422;
+  border: 1px solid #252422;
+  color: #F2E8DE;
 }
 
 .logo {
