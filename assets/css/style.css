@@ -210,6 +210,7 @@ nav ul li {
 }
 
 .prompt-container .for-border {
+  width: 100%;
   padding: 20px;
   position: relative;
   border: 1px dashed #252422;

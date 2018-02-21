@@ -19,9 +19,27 @@ const getPromptGenre = str => {
     .catch(error => alert(`I'm sorry, it seems there isn't any prompt with that keyword :(`));
 };
 
+// Obteniendo prompt random para el inicio
+const getRandomPrompt = () => {
+  const promise = fetch(`https://api.tumblr.com/v2/tagged?tag=prompt&api_key=${tumblrAPI}&filter=text`);
+  promise
+    .then(data => data.json())
+    .then(data => {
+      //console.log(filterTypeText(data.response));
+      let array = filterTypeText(data.response);
+      let num = randomNumber(array);
+      array = array[num];
+      console.log(array);
+      let content = array.body;
+      console.log(content);
+      $('.dash-s .prompt-container p').html(content);
+    })
+    .catch(error => alert(`I'm sorry, it seems there isn't any prompt with that keyword :(`));
+};
+
 // Genera un número random de 0 a 20
-const randomNumber = () => {
-  return Math.floor((Math.random() * 20));
+const randomNumber = (array) => {
+  return Math.floor((Math.random() * array.length));
 };
 
 // Esta función filtra prompts para que sólo recibamos aquellas que son tipo texto y tienen menos de 1000 caracteres

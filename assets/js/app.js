@@ -40,4 +40,7 @@ $('#enter-login').click(function() {
 $('#logo').click(function() {
   $('#main-container').empty();
   $('#main-container').append(dashSectionHTML);
+  getRandomPrompt();
 })
+
+getRandomPrompt();
