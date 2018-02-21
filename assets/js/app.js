@@ -16,11 +16,8 @@ $('.prompt').on('click', '.save', function () {
     div = $(div).html()
     console.log(div);
     // buscar esto en la data del usuario para borrarlo
-    //var div = $(this).parents()[0];
-    //div = $(div).parents()[1];
-    //var code = $(div).children()[0];
-    //var index = user["favorites"].indexOf(code);
-    //user["favorites"].splice(index, 1);
-    //console.log(user["favorites"]);
+    //var index = user["saves"].indexOf(code);
+    //user["saves"].splice(index, 1);
+    //console.log(user["saves"]);
   }
-})
+});
