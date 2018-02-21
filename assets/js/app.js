@@ -13,6 +13,7 @@ $('.prompt').on('click', '.save', function (){
     var div = $(this).parent();
     div = $(div).html()
     console.log(div);
+    // buscar esto en la data del usuario para borrarlo
     //var div = $(this).parents()[0];
     //div = $(div).parents()[1];
     //var code = $(div).children()[0];
