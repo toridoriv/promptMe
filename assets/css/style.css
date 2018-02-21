@@ -61,13 +61,13 @@ nav ul li {
   padding: 0 10px;
 }
 
-.reg-log li {
+.reg-log li, #login-menu li {
   line-height: 35px;
   padding: 0 10px;
+  margin: 0 5px;
   border: 2px solid #252422;
   background-color: #252422;
   border-radius: 35px;
-  margin: 0 10px;
   color: #F2E8DE;
   cursor: pointer;
   font-size: 13.5px;
@@ -75,9 +75,39 @@ nav ul li {
   transition: ease-in-out .3s;
 }
 
-.reg-log li:hover {
+.reg-log li:hover, #login-menu li:hover {
   background-color: #F2E8DE;
   color: #252422;
+}
+
+
+#login-menu {
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  float: right;
+  padding: 0 20px 0 0;
+}
+
+#login-menu li {
+  line-height: 30px;
+}
+
+.search-container {
+  padding: 12px 10px;
+  line-height: 60px;
+  width: 600px;
+  height: 70px;
+}
+
+.search-container .input-group {
+  margin: 0;
+  height: 70px;
+}
+
+.search-container input, .input-group-append {
+  margin: 0;
+  height: 45px;
 }
 
 .logo {
@@ -349,5 +379,17 @@ nav ul li {
   .vertical-align {
       display: flex;
       align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  ul#login-menu {
+    padding: 0 3px 0 0!important;
+  }
+  #login-menu li {
+    margin: 0 1px;
+  }
+  div.logo {
+    padding: 5px 3px;
   }
 }
