@@ -73,8 +73,9 @@ const randomNumber = (array) => {
 // Esta función filtra prompts para que sólo recibamos aquellas que son tipo texto y tienen menos de 1000 caracteres
 const filterTypeText = arr => {
   let newArr = [];
+  let avoidText = 'Image taken from';
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i].type === 'text'&& arr[i].body.length < 1000) {
+    if (arr[i].type === 'text' && arr[i].body.length < 1000 && arr[i].body.includes(avoidText) === false) {
       newArr.push(arr[i]);
     }
   }

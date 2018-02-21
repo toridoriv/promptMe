@@ -20,26 +20,28 @@ const parentElement = $('#main-container');
 const login = (event) => {
   $('#main-container').on('click', '#btn-login', function(event) { //function(error, event)
     event.preventDefault();
-    console.log('hola')
+    console.log('hola');
     const inputPass = $('#input-pass');
     const inputMail = $('#input-mail');
     const email = inputMail.val();
     const pass = inputPass.val();
     const auth = firebase.auth();
-    //Limpiando los inputs
-    inputMail.val('');
-    inputPass.val('');
-    // pasando a inicio con login :D
-    $('nav').empty();
-    $('nav').append(loginNav);
-    $('#main-container').empty();
-    $('#main-container').append(searchContainerHTML);
-    getRandomPrompts();
-    $(window).scrollTop(0);
-    signout();
-    // terminando de pasar a inicio con login
     const promise = auth.signInWithEmailAndPassword(email, pass);
-    promise.catch(error => console.log(error.message));
+    promise
+      .then(() => {
+        //Limpiando los inputs
+        inputMail.val('');
+        inputPass.val('');
+        // pasando a inicio con login :D
+        $('nav').empty();
+        $('nav').append(loginNav);
+        $('#main-container').empty();
+        $('#main-container').append(searchContainerHTML);
+        getRandomPrompts();
+        $(window).scrollTop(0);
+        signout();
+      })
+      .catch(error => console.log(error.message));
   });
 };
 
@@ -133,5 +135,13 @@ const saveFavs = (firebaseUser, pos) => {
     .catch(function(error) {
       console.log(error);
     });
+  });
+};
+
+const showFavs = (firebaseUser) => {
+  const database = firebase.database();
+  let userID = firebaseUser.uid;
+  return database.ref(`users/${userID}`).once('saved').then(function(snapshot) {
+    console.log(snapshot.val());
   });
 };

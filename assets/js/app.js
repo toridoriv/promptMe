@@ -77,4 +77,5 @@ $(document).ready(function() {
   // llamando funciones
   signUp();
   login();
+  realTimeListener();
 })
