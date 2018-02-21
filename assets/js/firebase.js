@@ -65,6 +65,7 @@ const realTimeListener = () => {
       }
       // Remplazar main-container con el elemento padre
       $('#login-menu').removeClass('d-none');
+      signout();
       console.log(firebaseUser.displayName);
     } else {
       console.log('not logged');
