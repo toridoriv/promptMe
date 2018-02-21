@@ -8,21 +8,18 @@
 
 const tumblrAPI = 'Y7i0Sf2WGphZl5UIRFNyQERsrGifS23D7AvxW4X2cTRyCO0nQJ';
 
+// Obtiene un array de 20 prompts desde la API y luego las filtra con la nueva función
 const getPromptGenre = str => {
   const promise = fetch(`https://api.tumblr.com/v2/tagged?tag=${str}-prompt&api_key=${tumblrAPI}&filter=text`);
   promise
     .then(data => data.json())
     .then(data => {
       console.log(filterTypeText(data.response));
-      // let storyPrompt = getRandomPrompt(data.response);
-      // if (storyPrompt.length > 500) {
-      //   storyPrompt = getRandomPrompt(data.response);
-      // }
-      // console.log(storyPrompt);
     })
     .catch(error => alert(`I'm sorry, it seems there isn't any prompt with that keyword :(`));
 };
 
+// Genera un número random de 0 a 20
 const randomNumber = () => {
   return Math.floor((Math.random() * 20));
 };
