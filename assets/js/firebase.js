@@ -18,7 +18,7 @@ const parentElement = $('#main-container');
 
 // Función para logearse a Firebase
 const login = (event) => {
-  $('#main-container').on('click', '#btn-login', function(event) { //function(error, event)
+  $('#main-container').on('click', '#btn-login', function(event) {
     event.preventDefault();
     console.log('hola');
     const inputPass = $('#input-pass');
