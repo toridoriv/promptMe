@@ -139,9 +139,10 @@ const saveFavs = (firebaseUser, pos) => {
 };
 
 const showFavs = (firebaseUser) => {
-  const database = firebase.database();
-  let userID = firebaseUser.uid;
-  return database.ref(`users/${userID}`).once('saved').then(function(snapshot) {
-    console.log(snapshot.val());
+  const ref = firebase.database().ref(`users/${firebaseUser.uid}/saved`);
+  ref.on('value', function(snapshot) {
+    for (let i = 0; i < snapshot.val().length; i++) {
+      $('#results').append(`<p>${snapshot.val()[i]}</p>`);
+    }
   });
 };
