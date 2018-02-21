@@ -22,7 +22,7 @@ ul {
 .full-container {
   width: 100%;
   min-height: 100vh;
-  background-color: yellow;
+  background-color: #252422;
   position: relative;
 }
 
@@ -57,7 +57,7 @@ nav ul li {
 
 .section {
   width: 100%;
-  padding: 0;
+  padding: 100px 0;
 }
 
 /* .login-s, .register-s {
@@ -65,17 +65,37 @@ nav ul li {
 } */
 
 .login-form {
-  border: 1px solid black;
   padding: 40px 10px;
+  background-color: #F2E8DE;
 }
 
 .login-form label, .login-form input {
   width: 100%;
 }
 
+.login-form label {
+  margin: 0;
+}
+
+.mail, .password {
+  margin-bottom: 15px;
+}
+
 .login-form .submit-button {
   width: 100%;
-  padding: 20px 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.login-form button {
+  background-color: #410B13;
+  color: #F2E8DE;
+  width: 100%;
+}
+
+.login-form a {
+  color: #410B13;
+  font-weight: 600;
 }
 
 
@@ -98,10 +118,10 @@ nav ul li {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #252422;
+  background-color: #F2E8DE;
   text-align: center;
   height: 50px;
-  color: #F2E8DE;
+  color: #252422;
 }
 
 .footer p {
@@ -110,7 +130,7 @@ nav ul li {
 }
 
 .footer:before {
-    background: linear-gradient(-45deg, #252422 16px, transparent 0), linear-gradient(45deg, #252422 16px, transparent 0);
+    background: linear-gradient(-45deg, #F2E8DE 16px, transparent 0), linear-gradient(45deg, #F2E8DE 16px, transparent 0);
     background-position: left-bottom;
     background-repeat: repeat-x;
     background-size: 25px 25px;
@@ -151,6 +171,18 @@ nav ul li {
   position: absolute;
   bottom: 15px;
   right: 15px;
+}
+
+.marker {
+  color: #410B13;
+}
+
+.prompt .url a {
+  color: #410B13;
+}
+
+.prompt .url a:hover {
+  color: #1B3022;
 }
 
 /* flecha animada */
