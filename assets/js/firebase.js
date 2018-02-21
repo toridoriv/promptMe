@@ -63,6 +63,8 @@ const realTimeListener = () => {
           displayName: prompt('Name Here')
         });
       }
+      // Al conectarse el usuario, inmediatamente se obtiene el número de marcadores
+      getChildNumber(firebaseUser);
       // Remplazar main-container con el elemento padre
       $('#login-menu').removeClass('d-none');
       signout();
@@ -81,5 +83,38 @@ const signout = () => {
     event.preventDefault();
     firebase.auth().signOut();
     $('#login-menu').addClass('d-none');
+  });
+};
+
+// REALTIME DATABASE
+
+// Función que obtiene el número de marcadores del usuario
+const getChildNumber = (firebaseUser) => {
+  const database = firebase.database();
+  var ref = database.ref(`users/${firebaseUser.uid}/`);
+  ref.child('saved').on('value', function(snapshot) {
+    let pos = snapshot.numChildren();
+    saveFavs(firebaseUser, pos);
+  });
+};
+
+// La función anterior nos manda a esta. Se le entrega el número de marcadores como parámetro y se establece
+// como nuevo parámetro esa cantidad más uno
+const saveFavs = (firebaseUser, pos) => {
+  $('.container .par').on('click', function() {
+    let toSave = $(this).text().trim();
+    const database = firebase.database();
+    var ref = database.ref(`users/${firebaseUser.uid}/saved/`);
+    var obj = {};
+    obj[pos+1] = toSave;
+    ref.update(obj)
+    .then(() => {
+      setTimeout(() => {
+        location.reload();
+      }, 500);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
   });
 };
