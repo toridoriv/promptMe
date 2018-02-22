@@ -13,40 +13,6 @@ const tags = '<div class="col-12 col-md-10 offset-md-1 tags-container"><p>Or cli
 $(document).ready(function() {
   // buscando un prompt aleatorio para mostrar en inicio
   getRandomPrompt();
-  /* click en el marcador para prompts */
-  $('#main-container').on('click', '.save', function() {
-    console.log('hola');
-    // SI QUEREMOS GUARDAR UN PROMPT
-    if ($(this).hasClass('not-active')) {
-      $(this).removeClass('not-active');
-      $(this).html('<i class="fas fa-bookmark fa-2x marker"></i>');
-      var div = $(this).parent();
-      console.log(div)
-      //guardar texto del prompt
-      let text = $(div).children()[1];
-      text = $(text).children()[0];
-      text = $(text).html();
-      let url = $(div).children()[3];
-      url = $(url).children()[0];
-      url = $(url).attr('href');
-      // ***TEXTO: text
-      console.log(text);
-      // ***URL: url
-      console.log(url)
-      
-    } // SI QUEREMOS BORRAR UN PROMPT
-    else {
-      $(this).addClass('not-active');
-      $(this).html('<i class="far fa-bookmark fa-2x marker"></i>');
-      var div = $(this).parent();
-      div = $(div).html()
-      console.log(div);
-      // buscar esto en la data del usuario para borrarlo
-      //var index = user["saves"].indexOf(code);
-      //user["saves"].splice(index, 1);
-      //console.log(user["saves"]);
-    }
-  });
   // click en registro
   $('body').on('click', '.enter-register', function(e) {
     e.preventDefault();

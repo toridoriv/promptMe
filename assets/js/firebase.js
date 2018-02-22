@@ -124,21 +124,22 @@ const getChildNumber = (firebaseUser) => {
   const database = firebase.database();
   var ref = database.ref(`users/${firebaseUser.uid}/`);
   ref.child('saved').on('value', function(snapshot) {
-    let pos = snapshot.numChildren();
-    saveFavs(firebaseUser, pos);
+    let pos = snapshot.numChildren() - 1;
+    createMarker(firebaseUser, pos);
   });
 };
 
 // La función anterior nos manda a esta. Se le entrega el número de marcadores como parámetro y se establece
 // como nuevo parámetro esa cantidad más uno
-const saveFavs = (firebaseUser, pos) => {
-  $('.container .par').on('click', function() {
-    let toSave = $(this).text().trim();
-    const database = firebase.database();
-    var ref = database.ref(`users/${firebaseUser.uid}/saved/`);
-    var obj = {};
-    obj[pos+1] = toSave;
-    ref.update(obj)
+const saveFavs = (firebaseUser, pos, textToSave, urlToSave) => {
+  const database = firebase.database();
+  var ref = database.ref(`users/${firebaseUser.uid}/saved/`);
+  var obj = {};
+  obj[pos+1] = {
+    text: textToSave,
+    url: urlToSave
+  };
+  ref.update(obj)
     .then(() => {
       setTimeout(() => {
         location.reload();
@@ -147,7 +148,6 @@ const saveFavs = (firebaseUser, pos) => {
     .catch(function(error) {
       console.log(error);
     });
-  });
 };
 
 const showFavs = (firebaseUser) => {
@@ -158,4 +158,35 @@ const showFavs = (firebaseUser) => {
       $('#results').append(`<p>${snapshot.val()[i]}</p>`);
     }
   });
+};
+
+const createMarker = (firebaseUser, pos) => {
+  /* click en el marcador para prompts */
+  $('#main-container').on('click', '.save', function() {
+    // SI QUEREMOS GUARDAR UN PROMPT
+    if ($(this).hasClass('not-active')) {
+      $(this).removeClass('not-active');
+      $(this).html('<i class="fas fa-bookmark fa-2x marker"></i>');
+      var div = $(this).parent();
+      //guardar texto del prompt
+      let text = $(div).children()[1];
+      text = $(text).children()[0];
+      text = $(text).html();
+      let url = $(div).children()[3];
+      url = $(url).children()[0];
+      url = $(url).attr('href');
+      saveFavs(firebaseUser, pos, text, url);
+    } // SI QUEREMOS BORRAR UN PROMPT
+    else {
+      $(this).addClass('not-active');
+      $(this).html('<i class="far fa-bookmark fa-2x marker"></i>');
+      var div = $(this).parent();
+      div = $(div).html()
+      console.log(div);
+      // buscar esto en la data del usuario para borrarlo
+      //var index = user["saves"].indexOf(code);
+      //user["saves"].splice(index, 1);
+      //console.log(user["saves"]);
+    }
+  }); 
 };
