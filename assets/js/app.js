@@ -50,9 +50,18 @@ $(document).ready(function() {
     $('#main-container').append(loginHTML);
     $(window).scrollTop(0);
   })
+  //click en el logo
+  $('nav').on('click', '#logo', function() {
+    let first =$('#main-container').children()[0];
+    if ($(first).hasClass('register-s') || $(first).hasClass('login-s')) {
+      $('#main-container').empty();
+      $('#main-container').append(dashSectionHTML);
+      getRandomPrompt();
+      $(window).scrollTop(0);
+    }
+  })
   // click en el logo con loginNav
   $('nav').on('click', '#logo-two', function() {
-    // POR HACER: si estamos logeados, que llame al otro inicio
     $('#main-container').empty();
     $('#main-container').append(searchContainerHTML);
     getRandomPrompts();
