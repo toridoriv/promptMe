@@ -76,9 +76,17 @@ const signUp = (event) => {
 // Creando función que haga algo cuando el usuario esté loggeado
 const realTimeListener = () => {
   firebase.auth().onAuthStateChanged(firebaseUser => {
-    if (firebaseUser) {
+    if (firebaseUser) { // si el usuario ya está logeado
       // Al conectarse el usuario, inmediatamente se obtiene el número de marcadores
       getChildNumber(firebaseUser);
+      // pasando a inicio con login :D
+      $('nav').empty();
+      $('nav').append(loginNav);
+      $('#main-container').empty();
+      $('#main-container').append(searchContainerHTML);
+      getRandomPrompts();
+      // terminando de pasar a inicio con login
+      
       //$('.reg-log').remove();
       // Remplazar main-container con el elemento padre
       signout();

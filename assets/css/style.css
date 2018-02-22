@@ -204,9 +204,13 @@ nav ul li {
   letter-spacing: 1px;
 }
 
-.login-form a {
+.login-form a, footer a {
   color: #410B13;
   font-weight: 600;
+}
+
+footer a:hover {
+  color: #410B13;
 }
 
 /* inicio sin login */
