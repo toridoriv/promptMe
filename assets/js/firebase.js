@@ -20,7 +20,6 @@ const parentElement = $('#main-container');
 const login = (event) => {
   $('#main-container').on('click', '#btn-login', function(event) {
     event.preventDefault();
-    console.log('hola');
     const inputPass = $('#input-pass');
     const inputMail = $('#input-mail');
     const email = inputMail.val();
@@ -42,7 +41,10 @@ const login = (event) => {
         $(window).scrollTop(0);
         signout();
       })
-      .catch(error => console.log(error.message));
+      .catch(error => {
+        let errMsg = `<div class="alert alert-danger" role="alert">${error.message}</div>`;
+        $('form.col-12.col-md-8.offset-md-2.login-form').append(errMsg);
+      });
   });
 };
 
@@ -99,7 +101,6 @@ const realTimeListener = () => {
       //$('.reg-log').remove();
       // Remplazar main-container con el elemento padre
       signout();
-      console.log(firebaseUser.displayName);
     } else {
       console.log('not logged');
     }
@@ -113,7 +114,6 @@ const signout = () => {
   $('nav').on('click', '.btn-logout', function(event) {
     event.preventDefault();
     firebase.auth().signOut();
-    console.log('hola')
     // pasando a inicio sin login :(
     $('nav').empty();
     $('nav').append(noLoginNav);
@@ -136,7 +136,7 @@ const saveFavs = (firebaseUser, textToSave, urlToSave) => {
   };
   ref.push(obj)
     .catch(function(error) {
-      console.log(error);
+      alert(error.message);
     });
 };
 
@@ -153,7 +153,6 @@ const deleteFavs = (firebaseUser, url) => {
   firebase.database().ref(`users/${firebaseUser.uid}/saved`).orderByChild('url').equalTo(url).once("value").then(function(snapshot) {
     snapshot.forEach(function(child) {
       child.ref.remove();
-      console.log("Removed!");
     });
   });
 };

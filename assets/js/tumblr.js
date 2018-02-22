@@ -14,7 +14,6 @@ const getPromptGenre = str => {
   promise
     .then(data => data.json())
     .then(data => {
-      console.log(filterTypeText(data.response));
       //insertando al dom acá
       let array = filterTypeText(data.response);
       array.forEach(function(element) {
@@ -24,10 +23,7 @@ const getPromptGenre = str => {
         let spanClassYesInData = 'save';
         // ***** SI LA URL COINCIDE CON ALGUNA URL DE LA DATA
         // ---- apenddear el li con spanClassYesInData
-        console.log(url)
-        console.log(existentUrls.indexOf(url))
         if(existentUrls.indexOf(url) >= 0) {
-          console.log(existentUrls)
           $('ul.prompt-list').append(`<li><div class="prompt-container row"><div class="prompt col-12 col-md-8 offset-md-2 vertical-align"><div class="for-border vertical-align"><figure class="col-12 col-md-3 text-center"><img src="assets/img/bookie.png" alt="book"></figure><div class="contentp col-12 col-md-8"><p class="prompt-text">${content}</p></div><span class="${spanClassYesInData}"><i class="fas fa-bookmark fa-2x marker"></i></span><span class="url"><a href="${url}" target="_blank"><i class="fas fa-external-link-square-alt fa-2x"></i></a></span></div></div></div></li>`);
         }
         // ***** ELSE LA URL NO COINCIDE CON ALGUNA URL DE LA DATA
@@ -51,10 +47,8 @@ const getRandomPrompt = () => {
       let array = filterTypeText(data.response);
       let num = randomNumber(array);
       array = array[num];
-      console.log(array);
       let content = array.body;
       let url = array.post_url;
-      console.log(content);
       $('.dash-s .prompt-container p').html(content);
       $('.dash-s .prompt-container .url a').attr('href', url);
     })
@@ -70,18 +64,13 @@ const getRandomPrompts = () => {
       //console.log(filterTypeText(data.response));
       let array = filterTypeText(data.response);
       array.forEach(function(element) {
-        console.log(existentUrls)
       let content = element.body;
       let url = element.post_url;
       let spanClassNotInData = 'save not-active';
       let spanClassYesInData = 'save';
       // ***** SI LA URL COINCIDE CON ALGUNA URL DE LA DATA
       // ---- apenddear el li con spanClassYesInData
-      console.log(url)
-
-      console.log(existentUrls.indexOf(url))
       if(existentUrls.indexOf(url) >= 0) {
-        console.log(existentUrls)
         $('ul.prompt-list').append(`<li><div class="prompt-container row"><div class="prompt col-12 col-md-8 offset-md-2 vertical-align"><div class="for-border vertical-align"><figure class="col-12 col-md-3 text-center"><img src="assets/img/bookie.png" alt="book"></figure><div class="contentp col-12 col-md-8"><p class="prompt-text">${content}</p></div><span class="${spanClassYesInData}"><i class="fas fa-bookmark fa-2x marker"></i></span><span class="url"><a href="${url}" target="_blank"><i class="fas fa-external-link-square-alt fa-2x"></i></a></span></div></div></div></li>`);
       }
       // ***** ELSE LA URL NO COINCIDE CON ALGUNA URL DE LA DATA

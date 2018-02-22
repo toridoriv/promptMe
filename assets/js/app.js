@@ -82,7 +82,6 @@ $(document).ready(function() {
     let str = $(this).attr('id');
     let title = $(this).html();
     title = title.split('#')[1];
-    console.log(str)
     $('#main-container').empty();
     $('#main-container').append(searchContainerHTML);
     getPromptGenre(str);
