@@ -460,9 +460,19 @@ span.enter-register:hover {
   }
 
 .hide-menu {
-  display: inline-block;
+  width: 100%;
   margin: 0;
-  padding:0;
+  padding:20px 0;
+  text-align: right;
+}
+
+.hide-menu li {
+  padding: 0px 20px;
+}
+
+.hide-menu hr {
+  background: black;
+  height: 1px;
 }
 
 /* un par de medias */
