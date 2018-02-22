@@ -144,8 +144,13 @@ nav ul li {
   font-size: 12px;
 }
 
-.search-container input:focus, .mini-search-container input:focus {
+.search-container input:focus, #main-container input:focus {
   background-color: #F2E8DE;
+  border-color: #410B13;
+  box-shadow: 0 0 0 0.2rem rgba(65,11,19,.25);
+}
+
+#main-container button:active, #main-container button:focus {
   border-color: #410B13;
   box-shadow: 0 0 0 0.2rem rgba(65,11,19,.25);
 }
