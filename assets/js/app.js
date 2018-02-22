@@ -49,22 +49,26 @@ $(document).ready(function() {
   $('nav').on('click', '#search-btn', function() {
     $(window).scrollTop(0);
     let string = $('#search').val();
-    $('#main-container').empty();
-    $('#main-container').append(searchContainerHTML);
-    $('#title-for-prompts').html(`Results for <span style='text-transform: uppercase'>${string}</span> prompts`)
-    getPromptGenre(string);
-    $('#search').val('')
+    if (string.length > 0 ) {
+      $('#main-container').empty();
+      $('#main-container').append(searchContainerHTML);
+      $('#title-for-prompts').html(`Results for <span style='text-transform: uppercase'>${string}</span> prompts`)
+      getPromptGenre(string);
+      $('#search').val('')
+    }
   })
   // o enter al buscar
   $("nav").on("keydown", 'input', function(event) {
       if(event.keyCode == 13) {
         $(window).scrollTop(0);
         let string = $(this).val();
-        $('#main-container').empty();
-        $('#main-container').append(searchContainerHTML);
-        $('#title-for-prompts').html(`Results for <span style='text-transform: uppercase'>${string}</span> prompts`)
-        getPromptGenre(string);
-        $(this).val('')
+        if (string.length > 0) {
+          $('#main-container').empty();
+          $('#main-container').append(searchContainerHTML);
+          $('#title-for-prompts').html(`Results for <span style='text-transform: uppercase'>${string}</span> prompts`)
+          getPromptGenre(string);
+          $(this).val('')
+        }
       }
   });
   // click búsqueda en dispositivos pequeños
