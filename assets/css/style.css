@@ -462,17 +462,33 @@ span.enter-register:hover {
 .hide-menu {
   width: 100%;
   margin: 0;
-  padding:20px 0;
+  padding:20px 0 0 0;
   text-align: right;
 }
 
 .hide-menu li {
-  padding: 0px 20px;
+  padding: 5px 20px;
+}
+
+.hide-menu li:first-child {
+  border-top: 1px solid black;
+}
+
+.hide-menu li:last-child {
+  border-bottom: 1px solid black;
+
 }
 
 .hide-menu hr {
   background: black;
   height: 1px;
+  margin: 0;
+}
+
+.reg-log .drop-menu-wl {
+  border-radius: 50%;
+  font-size: 1em;
+  margin-top: 15px;
 }
 
 /* un par de medias */
