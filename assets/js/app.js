@@ -11,6 +11,9 @@ const noLoginNav = '<div class="logo col-5 col-md-2"><img src="assets/img/mini-l
 const tags = '<div class="col-12 col-md-10 offset-md-1 tags-container"><p>Or click on a tag:</p><a href="#" class="badge badge-dark tag" id="drama">#Drama</a><a href="#" class="badge badge-dark tag" id="angst">#Angst</a><a href="#" class="badge badge-dark tag" id="fluff">#Fluff</a><a href="#" class="badge badge-dark tag" id="comedy">#Comedy</a><a href="#" class="badge badge-dark tag" id="romance">#Romance</a><a href="#" class="badge badge-dark tag" id="superheroes">#Superheroes</a><a href="#" class="badge badge-dark tag" id="scifi">#Sci-fi</a><a href="#" class="badge badge-dark tag" id="au">#Alternative Universe</a><a href="#" class="badge badge-dark tag" id="pairing">#Pairing</a></div>';
 
 $(document).ready(function() {
+  // inicializando firebase
+  firebase.initializeApp(config);
+  realTimeListener();
   // buscando un prompt aleatorio para mostrar en inicio
   getRandomPrompt();
   // click en registro
@@ -117,10 +120,7 @@ $(document).ready(function() {
         }
     });
 
-  // inicializando firebase
-  firebase.initializeApp(config);
   // llamando funciones
   signUp();
   login();
-  realTimeListener();
 });
