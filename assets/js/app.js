@@ -68,6 +68,18 @@ $(document).ready(function() {
     let cosa = getPromptGenre(string);
     $('#search').val('')
   })
+  // o enter al buscar
+  $("nav").on("keydown", 'input', function(event) {
+      if(event.keyCode == 13) {
+        $(window).scrollTop(0);
+        let string = $('#search').val();
+        $('#main-container').empty();
+        $('#main-container').append(searchContainerHTML);
+        $('#title-for-prompts').html(`Results for <span style='text-transform: uppercase'>${string}</span> prompts`)
+        let cosa = getPromptGenre(string);
+        $('#search').val('')
+      }
+  });
   // click búsqueda en dispositivos pequeños
   $('nav').on('click', '.button-search', function() {
     $('.mini-search-container').show();
