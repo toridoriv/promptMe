@@ -96,12 +96,15 @@ $(document).ready(function() {
     $('.mini-search-container').show();
   })
   // click a un tag
-  $('#main-container').on('click', 'tags', function() {
+  $('#main-container').on('click', '.tag', function(e) {
+    e.preventDefault();
     let str = $(this).attr('id');
     $('#main-container').empty();
     $('#main-container').append(searchContainerHTML);
     getPromptGenre(str);
     $('#title-for-prompts').html(`Results for <span style='text-transform: uppercase'>${str}</span> prompts`)
+    getRandomPrompts();
+    $(tags).insertAfter($('#main-container .title'));
     $(window).scrollTop(0);
   })
 
