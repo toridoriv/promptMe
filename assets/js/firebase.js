@@ -156,7 +156,7 @@ const showFavs = (firebaseUser) => {
   const ref = firebase.database().ref(`users/${firebaseUser.uid}/saved`);
   ref.on('value', function(snapshot) {
     for (let i = 0; i < snapshot.val().length; i++) {
-      $('ul.prompt-list').append(`<li><div class="prompt-container row"><div class="prompt col-12 col-md-8 offset-md-2 vertical-align"><div class="for-border vertical-align"><figure class="col-12 col-md-3 text-center"><img src="assets/img/bookie.png" alt="book"></figure><div class="contentp col-12 col-md-8"><p class="prompt-text">${snapshot.val()[i].text}</p></div><span class="save not-active"><i class="far fa-bookmark fa-2x marker"></i></span><span class="url"><a href="${snapshot.val()[i].url}" target="_blank"><i class="fas fa-external-link-square-alt fa-2x"></i></a></span></div></div></div></li>`);
+      $('ul.prompt-list').append(`<li><div class="prompt-container row"><div class="prompt col-12 col-md-8 offset-md-2 vertical-align"><div class="for-border vertical-align"><figure class="col-12 col-md-3 text-center"><img src="assets/img/bookie.png" alt="book"></figure><div class="contentp col-12 col-md-8"><p class="prompt-text">${snapshot.val()[i].text}</p></div><span class="save"><i class="fas fa-bookmark fa-2x marker"></i></i></span><span class="url"><a href="${snapshot.val()[i].url}" target="_blank"><i class="fas fa-external-link-square-alt fa-2x"></i></a></span></div></div></div></li>`);
     }
   });
 };
@@ -184,19 +184,24 @@ const createMarker = (firebaseUser, pos) => {
       $(this).addClass('not-active');
       $(this).html('<i class="far fa-bookmark fa-2x marker"></i>');
       var div = $(this).parent();
-      div = $(div).html()
-      console.log(div);
-      // buscar esto en la data del usuario para borrarlo
-      //var index = user["saves"].indexOf(code);
-      //user["saves"].splice(index, 1);
-      //console.log(user["saves"]);
+      //guardar url del prompt
+      let url = $(div).children()[3];
+      url = $(url).children()[0];
+      url = $(url).attr('href');
+      // **** SI URL SE ENCUENTRA EN LOS FAVS DEL USER, ENTONCES
+      // **** BORRAR DE LA DATA DEL USER
     }
-  }); 
+  });
 };
 
 const appendFavs = firebaseUser => {
   $('nav .my-favorites').on('click', function() {
-    $('ul.prompt-list').empty();
+    $('#main-container').empty();
+    $('#main-container').append(searchContainerHTML);
     showFavs(firebaseUser);
+    let title = 'Your saved prompts';
+    $('#title-for-prompts').html(`Results for <span style='text-transform: uppercase'>${title}</span> prompts`);
+    let titleFavs = $('#title-for-prompts').parent();
+    $(titleFavs).addClass('title-for-favs');
   });
 };

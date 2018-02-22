@@ -340,6 +340,10 @@ footer a:hover {
   color: #F2E8DE;
 }
 
+.title-for-favs {
+  padding-bottom: 70px;
+}
+
 /* footer */
 .footer {
   position: absolute;

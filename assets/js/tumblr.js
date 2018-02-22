@@ -20,7 +20,13 @@ const getPromptGenre = str => {
       array.forEach(function(element) {
         let content = element.body;
         let url = element.post_url;
+        let spanClassNotInData = 'save not-active';
+        let spanClassYesInData = 'save';
         $('ul.prompt-list').append(`<li><div class="prompt-container row"><div class="prompt col-12 col-md-8 offset-md-2 vertical-align"><div class="for-border vertical-align"><figure class="col-12 col-md-3 text-center"><img src="assets/img/bookie.png" alt="book"></figure><div class="contentp col-12 col-md-8"><p class="prompt-text">${content}</p></div><span class="save not-active"><i class="far fa-bookmark fa-2x marker"></i></span><span class="url"><a href="${url}" target="_blank"><i class="fas fa-external-link-square-alt fa-2x"></i></a></span></div></div></div></li>`);
+        // ***** SI LA URL COINCIDE CON ALGUNA URL DE LA DATA
+        // ---- apenddear el li con spanClassYesInData
+        // ***** ELSE LA URL NO COINCIDE CON ALGUNA URL DE LA DATA
+        // ---- appendear el li con spanClassNoInData
       })
       // terminando de insertar el dom
     })
@@ -58,7 +64,13 @@ const getRandomPrompts = () => {
       array.forEach(function(element) {
       let content = element.body;
       let url = element.post_url;
+      let spanClassNotInData = 'save not-active';
+      let spanClassYesInData = 'save';
       $('ul.prompt-list').append(`<li><div class="prompt-container row"><div class="prompt col-12 col-md-8 offset-md-2 vertical-align"><div class="for-border vertical-align"><figure class="col-12 col-md-3 text-center"><img src="assets/img/bookie.png" alt="book"></figure><div class="contentp col-12 col-md-8"><p class="prompt-text">${content}</p></div><span class="save not-active"><i class="far fa-bookmark fa-2x marker"></i></span><span class="url"><a href="${url}" target="_blank"><i class="fas fa-external-link-square-alt fa-2x"></i></a></span></div></div></div></li>`);
+      // ***** SI LA URL COINCIDE CON ALGUNA URL DE LA DATA
+      // ---- apenddear el li con spanClassYesInData
+      // ***** ELSE LA URL NO COINCIDE CON ALGUNA URL DE LA DATA
+      // ---- appendear el li con spanClassNoInData
       })
 
     })
