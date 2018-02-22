@@ -77,11 +77,6 @@ const signUp = (event) => {
 const realTimeListener = () => {
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
-      if (firebaseUser.displayName == null) {
-        firebaseUser.updateProfile({
-          displayName: prompt('Name Here')
-        });
-      }
       // Al conectarse el usuario, inmediatamente se obtiene el número de marcadores
       getChildNumber(firebaseUser);
       // Remplazar main-container con el elemento padre
