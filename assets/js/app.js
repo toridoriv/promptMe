@@ -8,7 +8,7 @@ const loginHTML = '<div class="login-s section"><div class="row"><div class="col
 const searchContainerHTML = '<div class="listing-prompt section"><div class="title"><h3 class="text-center" id="title-for-prompts">Random prompts for you (?</h3><hr></div><ul class="prompt-list"></ul></div>';
 const loginNav = '<div class="logo col-5 col-md-2"><img src="assets/img/mini-logo.png" alt="Prompt Me" id="logo-two"></div><div class="search-container d-none d-lg-inline-block col-lg-5"><div class="input-group"><input type="text" class="form-control" placeholder="What are you looking for?" aria-label="what are you looking for?" aria-describedby="basic-addon2" id="search"><div class="input-group-append"><button class="btn btn-outline-secondary" type="button" id="search-btn"><i class="fas fa-search"></i></button></div></div></div><ul class="col-7 col-lg-5 text-right" id="login-menu"><li class="d-lg-none button-search"><i class="fas fa-search"></i></li><li><i class="fas fa-heart"></i> <span class="d-none d-lg-inline-block">Favorites</span></li><li><i class="fas fa-cogs"></i> <span class="d-none d-lg-inline-block">Settings</span></li><li id="btn-logout"><i class="fas fa-sign-out-alt"></i> <span class="d-none d-lg-inline-block">Log Out</span></li></ul><div class="mini-search-container col-12"><div class="input-group"><input type="text" class="form-control" placeholder="What are you looking for?" aria-label="What are you looking for?" aria-describedby="basic-addon2" id="search"><div class="input-group-append"><button class="btn btn-outline-secondary" type="button" id="search-btn"><i class="fas fa-search"></i></button></div></div></div>';
 const noLoginNav = '<div class="logo col-5 col-md-2"><img src="assets/img/mini-logo.png" alt="Prompt Me" id="logo"></div><ul class="reg-log"><li class="enter-register">Register</li><li class="enter-login">Log In</li></ul>';
-const tags = '<div class="col-12 col-md-10 offset-md-1 tags-container"><p>Or click on a tag:</p><a href="#" class="badge badge-dark tag" id="drama">Drama</a><a href="#" class="badge badge-dark tag" id="angst">Angst</a><a href="#" class="badge badge-dark tag" id="fluff">Fluff</a><a href="#" class="badge badge-dark tag" id="comedy">Comedy</a><a href="#" class="badge badge-dark tag" id="romance">Romance</a><a href="#" class="badge badge-dark tag" id="superheroes">Superheroes</a><a href="#" class="badge badge-dark tag" id="scifi">Sci-fi</a><a href="#" class="badge badge-dark tag" id="au">Alternative Universe</a><a href="#" class="badge badge-dark tag" id="pairing">Pairing</a></div>';
+const tags = '<div class="col-12 col-md-10 offset-md-1 tags-container"><p>Or click on a tag:</p><a href="#" class="badge badge-dark tag" id="drama">#Drama</a><a href="#" class="badge badge-dark tag" id="angst">#Angst</a><a href="#" class="badge badge-dark tag" id="fluff">#Fluff</a><a href="#" class="badge badge-dark tag" id="comedy">#Comedy</a><a href="#" class="badge badge-dark tag" id="romance">#Romance</a><a href="#" class="badge badge-dark tag" id="superheroes">#Superheroes</a><a href="#" class="badge badge-dark tag" id="scifi">#Sci-fi</a><a href="#" class="badge badge-dark tag" id="au">#Alternative Universe</a><a href="#" class="badge badge-dark tag" id="pairing">#Pairing</a></div>';
 
 $(document).ready(function() {
   // buscando un prompt aleatorio para mostrar en inicio
@@ -107,14 +107,16 @@ $(document).ready(function() {
   })
   // click a un tag
   $('#main-container').on('click', '.tag', function(e) {
-    e.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
     let str = $(this).attr('id');
     let title = $(this).html();
+    title = title.split('#')[1];
+    console.log(str)
     $('#main-container').empty();
     $('#main-container').append(searchContainerHTML);
     getPromptGenre(str);
     $('#title-for-prompts').html(`Results for <span style='text-transform: uppercase'>${title}</span> prompts`)
-    getRandomPrompts();
     $(tags).insertAfter($('#main-container .title'));
     $(window).scrollTop(0);
   })
