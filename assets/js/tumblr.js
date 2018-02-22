@@ -22,7 +22,7 @@ const getPromptGenre = str => {
         let url = element.post_url;
         $('ul.prompt-list').append(`<li><div class="prompt-container row"><div class="prompt col-12 col-md-8 offset-md-2 vertical-align"><div class="for-border vertical-align"><figure class="col-12 col-md-3 text-center"><img src="assets/img/bookie.png" alt="book"></figure><div class="contentp col-12 col-md-8"><p class="prompt-text">${content}</p></div><span class="save not-active"><i class="far fa-bookmark fa-2x marker"></i></span><span class="url"><a href="${url}" target="_blank"><i class="fas fa-external-link-square-alt fa-2x"></i></a></span></div></div></div></li>`);
       })
-      
+      // terminando de insertar el dom
     })
     .catch(error => alert(`I'm sorry, it seems there isn't any prompt with that keyword :(`));
 };

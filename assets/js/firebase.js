@@ -38,6 +38,7 @@ const login = (event) => {
         $('#main-container').empty();
         $('#main-container').append(searchContainerHTML);
         getRandomPrompts();
+        $(tags).insertAfter($('#main-container .title'));
         $(window).scrollTop(0);
         signout();
       })
@@ -85,8 +86,9 @@ const realTimeListener = () => {
       $('#main-container').empty();
       $('#main-container').append(searchContainerHTML);
       getRandomPrompts();
+      $(tags).insertAfter($('#main-container .title'));
       // terminando de pasar a inicio con login
-      
+
       //$('.reg-log').remove();
       // Remplazar main-container con el elemento padre
       signout();
