@@ -459,6 +459,12 @@ span.enter-register:hover {
     display: none;
   }
 
+.hide-menu {
+  display: inline-block;
+  margin: 0;
+  padding:0;
+}
+
 /* un par de medias */
 @media (min-width: 770px) {
   .vertical-align {
