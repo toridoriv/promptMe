@@ -78,4 +78,4 @@ $(document).ready(function() {
   signUp();
   login();
   realTimeListener();
-})
+});
