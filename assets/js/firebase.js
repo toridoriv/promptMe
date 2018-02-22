@@ -63,7 +63,7 @@ const signUp = (event) => {
       inputPassReg.val('');
       // mostrando mensaje de éxito
       $('form').empty();
-      $('form').append('<p class="text-center">Registro Completo, ya puedes iniciar sesión.</p>');
+      $('form').append(`<p class="text-center" style="font-weight:bold;">Alright, alright. That’s what I’m talkin’ about!</p><p class="text-center" style="font-weight:bold;">You're already registered and logged in :3</p>`);
       $(window).scrollTop(0);
     })
     .catch(error => {
@@ -79,6 +79,7 @@ const realTimeListener = () => {
     if (firebaseUser) {
       // Al conectarse el usuario, inmediatamente se obtiene el número de marcadores
       getChildNumber(firebaseUser);
+      //$('.reg-log').remove();
       // Remplazar main-container con el elemento padre
       signout();
       console.log(firebaseUser.displayName);
