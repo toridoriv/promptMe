@@ -85,6 +85,8 @@ const realTimeListener = () => {
       $('#main-container').append(searchContainerHTML);
       getRandomPrompts();
       $(tags).insertAfter($('#main-container .title'));
+      // Crea un array con los urls guardados
+      checkIfExists(firebaseUser);
       // Permitiendo guardar favoritos
       createMarker(firebaseUser);
       // Mostrando los favoritos al hacer click en... favoritos, duh xd
@@ -195,5 +197,15 @@ const appendFavs = firebaseUser => {
     $('#title-for-prompts').html(`Results for <span style='text-transform: uppercase'>${title}</span> prompts`);
     let titleFavs = $('#title-for-prompts').parent();
     $(titleFavs).addClass('title-for-favs');
+  });
+};
+
+// Añadiendo urls en la data del usuario a un array
+const checkIfExists = firebaseUser => {
+  const ref = firebase.database().ref(`users/${firebaseUser.uid}/saved`);
+  ref.once('value', function(snapshot) {
+    snapshot.forEach(child => {
+      existentUrls.push(child.val().url);
+    });
   });
 };
