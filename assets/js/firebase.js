@@ -55,15 +55,21 @@ const signUp = (event) => {
     const email = inputMailReg.val();
     const pass = inputPassReg.val();
     const auth = firebase.auth();
-    //Limpiando los inputs
-    inputMailReg.val('');
-    inputPassReg.val('');
-    // mostrando mensaje de éxito
-    $('form').empty();
-    $('form').append('<p class="text-center">Registro Completo, ya puedes iniciar sesión.</p>');
-    $(window).scrollTop(0);
     const promise = auth.createUserWithEmailAndPassword(email, pass);
-    promise.catch(error => console.log(error.message));
+    promise
+    .then(() => {
+      // Limpiando los inputs
+      inputMailReg.val('');
+      inputPassReg.val('');
+      // mostrando mensaje de éxito
+      $('form').empty();
+      $('form').append('<p class="text-center">Registro Completo, ya puedes iniciar sesión.</p>');
+      $(window).scrollTop(0);
+    })
+    .catch(error => {
+      let errMsg = `<div class="alert alert-danger" role="alert">${error.message}</div>`;
+      $('form.col-12.col-md-8.offset-md-2.login-form').append(errMsg);
+    });
   });
 };
 
