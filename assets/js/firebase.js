@@ -78,8 +78,6 @@ const signUp = (event) => {
 const realTimeListener = () => {
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) { // si el usuario ya está logeado
-      // Al conectarse el usuario, inmediatamente se obtiene el número de marcadores
-      getChildNumber(firebaseUser);
       // pasando a inicio con login :D
       $('nav').empty();
       $('nav').append(loginNav);
@@ -87,6 +85,8 @@ const realTimeListener = () => {
       $('#main-container').append(searchContainerHTML);
       getRandomPrompts();
       $(tags).insertAfter($('#main-container .title'));
+      // Permitiendo guardar favoritos
+      createMarker(firebaseUser);
       // Mostrando los favoritos al hacer click en... favoritos, duh xd
       appendFavs(firebaseUser);
       // terminando de pasar a inicio con login
@@ -121,49 +121,38 @@ const signout = () => {
 
 // REALTIME DATABASE
 
-// Función que obtiene el número de marcadores del usuario
-const getChildNumber = (firebaseUser) => {
-  const database = firebase.database();
-  var ref = database.ref(`users/${firebaseUser.uid}/`);
-  ref.child('saved').on('value', function(snapshot) {
-    let pos = snapshot.numChildren() - 1;
-    createMarker(firebaseUser, pos);
-  });
-};
-
-// La función anterior nos manda a esta. Se le entrega el número de marcadores como parámetro y se establece
-// como nuevo parámetro esa cantidad más uno
-const saveFavs = (firebaseUser, pos, textToSave, urlToSave) => {
+const saveFavs = (firebaseUser, textToSave, urlToSave) => {
   const database = firebase.database();
   var ref = database.ref(`users/${firebaseUser.uid}/saved/`);
-  var obj = {};
-  obj[pos+1] = {
+  var obj = {
     text: textToSave,
     url: urlToSave
   };
-  ref.update(obj)
-    .then(() => {
-      setTimeout(() => {
-        location.reload();
-      }, 500);
-    })
+  ref.push(obj)
     .catch(function(error) {
       console.log(error);
     });
 };
 
-const showFavs = (firebaseUser) => {
+const showFavs = firebaseUser => {
   const ref = firebase.database().ref(`users/${firebaseUser.uid}/saved`);
   ref.on('value', function(snapshot) {
-    for (let i = 0; i < snapshot.val().length; i++) {
-      $('ul.prompt-list').append(`<li><div class="prompt-container row"><div class="prompt col-12 col-md-8 offset-md-2 vertical-align"><div class="for-border vertical-align"><figure class="col-12 col-md-3 text-center"><img src="assets/img/bookie.png" alt="book"></figure><div class="contentp col-12 col-md-8"><p class="prompt-text">${snapshot.val()[i].text}</p></div><span class="save"><i class="fas fa-bookmark fa-2x marker"></i></i></span><span class="url"><a href="${snapshot.val()[i].url}" target="_blank"><i class="fas fa-external-link-square-alt fa-2x"></i></a></span></div></div></div></li>`);
-    }
+    snapshot.forEach(child => {
+      $('ul.prompt-list').append(`<li><div class="prompt-container row"><div class="prompt col-12 col-md-8 offset-md-2 vertical-align"><div class="for-border vertical-align"><figure class="col-12 col-md-3 text-center"><img src="assets/img/bookie.png" alt="book"></figure><div class="contentp col-12 col-md-8"><p class="prompt-text">${child.val().text}</p></div><span class="save"><i class="fas fa-bookmark fa-2x marker"></i></i></span><span class="url"><a href="${child.val().url}" target="_blank"><i class="fas fa-external-link-square-alt fa-2x"></i></a></span></div></div></div></li>`);
+    });
   });
 };
 
-// $('ul.prompt-list').append(`<li><div class="prompt-container row"><div class="prompt col-12 col-md-8 offset-md-2 vertical-align"><div class="for-border vertical-align"><figure class="col-12 col-md-3 text-center"><img src="assets/img/bookie.png" alt="book"></figure><div class="contentp col-12 col-md-8"><p class="prompt-text">${content}</p></div><span class="save not-active"><i class="far fa-bookmark fa-2x marker"></i></span><span class="url"><a href="${url}" target="_blank"><i class="fas fa-external-link-square-alt fa-2x"></i></a></span></div></div></div></li>`);
+const deleteFavs = (firebaseUser, url) => {
+  firebase.database().ref(`users/${firebaseUser.uid}/saved`).orderByChild('url').equalTo(url).once("value").then(function(snapshot) {
+    snapshot.forEach(function(child) {
+      child.ref.remove();
+      console.log("Removed!");
+    });
+  });
+};
 
-const createMarker = (firebaseUser, pos) => {
+const createMarker = firebaseUser => {
   /* click en el marcador para prompts */
   $('#main-container').on('click', '.save', function() {
     // SI QUEREMOS GUARDAR UN PROMPT
@@ -178,7 +167,7 @@ const createMarker = (firebaseUser, pos) => {
       let url = $(div).children()[3];
       url = $(url).children()[0];
       url = $(url).attr('href');
-      saveFavs(firebaseUser, pos, text, url);
+      saveFavs(firebaseUser, text, url);
     } // SI QUEREMOS BORRAR UN PROMPT
     else {
       $(this).addClass('not-active');
@@ -188,6 +177,7 @@ const createMarker = (firebaseUser, pos) => {
       let url = $(div).children()[3];
       url = $(url).children()[0];
       url = $(url).attr('href');
+      deleteFavs(firebaseUser, url);
       // **** SI URL SE ENCUENTRA EN LOS FAVS DEL USER, ENTONCES
       // **** BORRAR DE LA DATA DEL USER
     }
