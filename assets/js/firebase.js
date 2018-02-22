@@ -136,7 +136,7 @@ const saveFavs = (firebaseUser, textToSave, urlToSave) => {
 
 const showFavs = firebaseUser => {
   const ref = firebase.database().ref(`users/${firebaseUser.uid}/saved`);
-  ref.on('value', function(snapshot) {
+  ref.once('value', function(snapshot) {
     snapshot.forEach(child => {
       $('ul.prompt-list').append(`<li><div class="prompt-container row"><div class="prompt col-12 col-md-8 offset-md-2 vertical-align"><div class="for-border vertical-align"><figure class="col-12 col-md-3 text-center"><img src="assets/img/bookie.png" alt="book"></figure><div class="contentp col-12 col-md-8"><p class="prompt-text">${child.val().text}</p></div><span class="save"><i class="fas fa-bookmark fa-2x marker"></i></i></span><span class="url"><a href="${child.val().url}" target="_blank"><i class="fas fa-external-link-square-alt fa-2x"></i></a></span></div></div></div></li>`);
     });
@@ -178,6 +178,7 @@ const createMarker = firebaseUser => {
       url = $(url).children()[0];
       url = $(url).attr('href');
       deleteFavs(firebaseUser, url);
+      $(div).remove();
       // **** SI URL SE ENCUENTRA EN LOS FAVS DEL USER, ENTONCES
       // **** BORRAR DE LA DATA DEL USER
     }
