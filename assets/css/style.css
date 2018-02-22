@@ -84,7 +84,7 @@ nav ul li {
   padding: 0 10px;
 }
 
-.reg-log li, #login-menu li {
+.reg-log li, #login-menu li, #login-menu-xs li {
   line-height: 35px;
   padding: 0 10px;
   margin: 0 5px;
@@ -466,21 +466,21 @@ span.enter-register:hover {
   text-align: right;
 }
 
-.hide-menu li {
+.hide-menu li, .big-menu-hide li {
   padding: 5px 20px;
 }
 
-.hide-menu li:first-child {
-  border-top: 1px solid black;
+.hide-menu li:first-child, .big-menu-hide li:first-child {
+  border-top: 1px solid #252422;
 }
 
-.hide-menu li:last-child {
-  border-bottom: 1px solid black;
+.hide-menu li:last-child, .big-menu-hide li:last-child {
+  border-bottom: 1px solid #252422;
 
 }
 
 .hide-menu hr {
-  background: black;
+  background: #252422;
   height: 1px;
   margin: 0;
 }
@@ -490,6 +490,71 @@ span.enter-register:hover {
   font-size: 1em;
   margin-top: 15px;
 }
+
+#login-menu-xs {
+  margin: 0;
+  float: right;
+  padding: 10px 20px;
+  font-size: 1em;
+}
+
+#login-menu-xs li {
+  border-radius: 50%;
+}
+
+#login-menu-xs li:hover {
+  color: #252422;
+  background-color: #F2E8DE;
+}
+
+.big-menu-hide, .search-menu-hide {
+  margin-top: 70px;
+  width: 100%;
+}
+
+.search-menu-hide {
+  padding: 20px;
+  color: #252422;
+}
+
+.big-menu-hide span, .big-menu-hide span {
+  padding-right: 10px;
+}
+
+.search-menu-hide input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #252422;
+  border-radius: 0;
+}
+
+.search-menu-hide input:focus {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid #252422;
+  border-radius: 0;
+}
+
+.search-menu-hide input::placeholder {
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #252422;
+}
+
+.big-menu-hide li {
+  width: 100%;
+  text-align: right;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.big-menu-hide li:hover, .hide-menu li:hover {
+  cursor: pointer;
+  background-color: #252422;
+  color: #F2E8DE;
+}
+
 
 /* un par de medias */
 @media (min-width: 770px) {
