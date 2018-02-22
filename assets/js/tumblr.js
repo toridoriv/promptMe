@@ -71,8 +71,7 @@ const getRandomPrompts = () => {
       // ---- apenddear el li con spanClassYesInData
       // ***** ELSE LA URL NO COINCIDE CON ALGUNA URL DE LA DATA
       // ---- appendear el li con spanClassNoInData
-      })
-
+      });
     })
     .catch(error => alert(`I'm sorry, it seems there isn't any prompt with that keyword :(`));
 };
