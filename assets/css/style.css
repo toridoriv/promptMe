@@ -289,7 +289,20 @@ footer a:hover {
 .listing-prompt .tags-container {
   text-align: center;
   padding: 10px;
-  color: white;
+  color: #F2E8DE;
+  text-transform: lowercase;
+  padding-bottom: 35px;
+}
+
+.tags-container p {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.tag {
+  background-color: #205655;
+  padding: 3px 5px;
+  margin: 6px;
 }
 
 .save {
