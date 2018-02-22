@@ -454,6 +454,11 @@ span.enter-register:hover {
  }
 }
 
+
+  .search-menu-hide, .big-menu-hide, .hide-menu {
+    display: none;
+  }
+
 /* un par de medias */
 @media (min-width: 770px) {
   .vertical-align {

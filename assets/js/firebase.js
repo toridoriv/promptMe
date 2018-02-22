@@ -9,7 +9,7 @@ const config = {
 
 const btnReg = $('#btn-register');
 const btnLog = $('#btn-login');
-const btnLogOut = $('#btn-logout');
+const btnLogOut = $('.btn-logout');
 const inputNick = $('#input-nick');
 // PENDIENTE: Modificar el elemento padre
 const parentElement = $('#main-container');
@@ -105,7 +105,7 @@ const realTimeListener = () => {
 
 const signout = () => {
   // Remplazar main-container con el elemento padre
-  $('#login-menu').on('click', '#btn-logout', function(event) {
+  $('#login-menu').on('click', '.btn-logout', function(event) {
     event.preventDefault();
     firebase.auth().signOut();
     // pasando a inicio sin login :(
