@@ -291,7 +291,7 @@ footer a:hover {
   padding: 10px;
   color: #F2E8DE;
   text-transform: lowercase;
-  padding-bottom: 35px;
+  padding-bottom: 45px;
 }
 
 .tags-container p {
@@ -303,6 +303,11 @@ footer a:hover {
   background-color: #205655;
   padding: 3px 5px;
   margin: 6px;
+  color: #F2E8DE;
+}
+
+.tags-container .tag:hover {
+  background-color: #194241;
 }
 
 .save {
