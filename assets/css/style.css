@@ -283,7 +283,13 @@ footer a:hover {
 }
 
 .listing-prompt .title {
-  padding-bottom: 50px;
+
+}
+
+.listing-prompt .tags-container {
+  text-align: center;
+  padding: 10px;
+  color: white;
 }
 
 .save {
