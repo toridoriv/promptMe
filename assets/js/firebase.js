@@ -181,7 +181,7 @@ const createMarker = firebaseUser => {
       url = $(url).children()[0];
       url = $(url).attr('href');
       deleteFavs(firebaseUser, url);
-      $(div).remove();
+      //$(div).remove();
       // **** SI URL SE ENCUENTRA EN LOS FAVS DEL USER, ENTONCES
       // **** BORRAR DE LA DATA DEL USER
     }
