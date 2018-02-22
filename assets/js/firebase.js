@@ -87,6 +87,8 @@ const realTimeListener = () => {
       $('#main-container').append(searchContainerHTML);
       getRandomPrompts();
       $(tags).insertAfter($('#main-container .title'));
+      // Mostrando los favoritos al hacer click en... favoritos, duh xd
+      appendFavs(firebaseUser);
       // terminando de pasar a inicio con login
 
       //$('.reg-log').remove();
@@ -153,12 +155,13 @@ const saveFavs = (firebaseUser, pos, textToSave, urlToSave) => {
 const showFavs = (firebaseUser) => {
   const ref = firebase.database().ref(`users/${firebaseUser.uid}/saved`);
   ref.on('value', function(snapshot) {
-    $('#results').empty();
     for (let i = 0; i < snapshot.val().length; i++) {
-      $('#results').append(`<p>${snapshot.val()[i]}</p>`);
+      $('ul.prompt-list').append(`<li><div class="prompt-container row"><div class="prompt col-12 col-md-8 offset-md-2 vertical-align"><div class="for-border vertical-align"><figure class="col-12 col-md-3 text-center"><img src="assets/img/bookie.png" alt="book"></figure><div class="contentp col-12 col-md-8"><p class="prompt-text">${snapshot.val()[i].text}</p></div><span class="save not-active"><i class="far fa-bookmark fa-2x marker"></i></span><span class="url"><a href="${snapshot.val()[i].url}" target="_blank"><i class="fas fa-external-link-square-alt fa-2x"></i></a></span></div></div></div></li>`);
     }
   });
 };
+
+// $('ul.prompt-list').append(`<li><div class="prompt-container row"><div class="prompt col-12 col-md-8 offset-md-2 vertical-align"><div class="for-border vertical-align"><figure class="col-12 col-md-3 text-center"><img src="assets/img/bookie.png" alt="book"></figure><div class="contentp col-12 col-md-8"><p class="prompt-text">${content}</p></div><span class="save not-active"><i class="far fa-bookmark fa-2x marker"></i></span><span class="url"><a href="${url}" target="_blank"><i class="fas fa-external-link-square-alt fa-2x"></i></a></span></div></div></div></li>`);
 
 const createMarker = (firebaseUser, pos) => {
   /* click en el marcador para prompts */
@@ -189,4 +192,11 @@ const createMarker = (firebaseUser, pos) => {
       //console.log(user["saves"]);
     }
   }); 
+};
+
+const appendFavs = firebaseUser => {
+  $('nav .my-favorites').on('click', function() {
+    $('ul.prompt-list').empty();
+    showFavs(firebaseUser);
+  });
 };
