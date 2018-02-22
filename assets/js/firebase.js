@@ -65,6 +65,9 @@ const signUp = (event) => {
       // mostrando mensaje de éxito
       $('form').empty();
       $('form').append(`<p class="text-center" style="font-weight:bold;">Alright, alright. That’s what I’m talkin’ about!</p><p class="text-center" style="font-weight:bold;">You're already registered and logged in :3</p>`);
+    })
+    .then(() => {
+      location.reload();
       $(window).scrollTop(0);
     })
     .catch(error => {
