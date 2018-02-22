@@ -105,9 +105,10 @@ const realTimeListener = () => {
 
 const signout = () => {
   // Remplazar main-container con el elemento padre
-  $('#login-menu').on('click', '.btn-logout', function(event) {
+  $('nav').on('click', '.btn-logout', function(event) {
     event.preventDefault();
     firebase.auth().signOut();
+    console.log('hola')
     // pasando a inicio sin login :(
     $('nav').empty();
     $('nav').append(noLoginNav);
