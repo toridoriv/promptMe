@@ -99,10 +99,11 @@ $(document).ready(function() {
   $('#main-container').on('click', '.tag', function(e) {
     e.preventDefault();
     let str = $(this).attr('id');
+    let title = $(this).html();
     $('#main-container').empty();
     $('#main-container').append(searchContainerHTML);
     getPromptGenre(str);
-    $('#title-for-prompts').html(`Results for <span style='text-transform: uppercase'>${str}</span> prompts`)
+    $('#title-for-prompts').html(`Results for <span style='text-transform: uppercase'>${title}</span> prompts`)
     getRandomPrompts();
     $(tags).insertAfter($('#main-container .title'));
     $(window).scrollTop(0);
